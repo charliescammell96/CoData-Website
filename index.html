@@ -14,7 +14,7 @@
 >
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root{
   --ink:#0d1326;
@@ -23,9 +23,11 @@
   --soft:#f4f5fa;
   --line:#e3e6ef;
   --muted:#687086;
-  --purple:#7455df;
-  --teal:#13b6b2;
-  --lav:#a997ff;
+  --violet:#7357e6;
+  --violet-dark:#5b43c9;
+  --violet-soft:#b7a9ff;
+  --blue:#4f8cff;
+  --teal:#35c6c2;
   --radius:24px;
 }
 
@@ -39,7 +41,7 @@ html{
 
 body{
   margin:0;
-  font-family:Manrope,Arial,sans-serif;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif;
   color:var(--ink);
   background:#fff;
   line-height:1.55;
@@ -87,16 +89,16 @@ nav{
 }
 
 .links a:hover{
-  color:var(--purple);
+  color:var(--violet);
 }
 
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  background:var(--ink);
+  background:linear-gradient(135deg,var(--ink),#1b2850);
   color:#fff;
-  border-radius:13px;
+  border-radius:16px;
   padding:14px 20px;
   font-size:14px;
   font-weight:750;
@@ -105,7 +107,7 @@ nav{
 
 .btn:hover{
   transform:translateY(-2px);
-  box-shadow:0 15px 35px #10182b25;
+  box-shadow:0 16px 34px rgba(23,32,65,.18);
 }
 
 .btn.small{
@@ -117,9 +119,9 @@ nav{
   overflow:hidden;
   padding:64px 0 92px;
   background:
-    radial-gradient(circle at 79% 26%,#7658df1f,transparent 25%),
-    radial-gradient(circle at 91% 78%,#17b9b51b,transparent 25%),
-    linear-gradient(180deg,#fff 0%,#f7f7fb 100%);
+    radial-gradient(circle at 78% 24%,#7357e624,transparent 28%),
+    radial-gradient(circle at 91% 80%,#4f8cff1e,transparent 30%),
+    linear-gradient(180deg,#ffffff 0%,#f7f8fc 100%);
 }
 
 .hero:after{
@@ -127,7 +129,7 @@ nav{
   position:absolute;
   inset:auto -12% -180px 42%;
   height:400px;
-  background:linear-gradient(120deg,#795ce31b,#15b6b21c);
+  background:linear-gradient(120deg,#7357e620,#4f8cff1a);
   filter:blur(60px);
   transform:rotate(-10deg);
 }
@@ -149,7 +151,7 @@ nav{
   font-size:11px;
   font-weight:800;
   letter-spacing:2px;
-  color:var(--purple);
+  color:var(--violet);
 }
 
 .kicker:before{
@@ -160,15 +162,22 @@ nav{
 }
 
 h1{
-  font-size:clamp(55px,7.4vw,91px);
-  line-height:.96;
-  letter-spacing:-6px;
-  margin:22px 0 28px;
+  font-size:clamp(46px,5.4vw,68px);
+  line-height:1.06;
+  letter-spacing:-3.2px;
+  font-weight:700;
+  margin:24px 0 30px;
+}
+
+h1 br{
+  display:block;
+  content:"";
+  margin-bottom:10px;
 }
 
 h1 em{
   font-style:normal;
-  color:var(--purple);
+  color:var(--violet);
 }
 
 .lead{
@@ -241,7 +250,7 @@ h1 em{
   position:absolute;
   left:50%;
   top:49%;
-  border:1px solid #7662d444;
+  border:1px solid #7357e642;
   border-radius:50%;
   transform:translate(-50%,-50%) rotate(-12deg);
 }
@@ -260,9 +269,10 @@ h1 em{
 
 .flow-card{
   position:absolute;
-  width:188px;
+  width:182px;
+  min-height:108px;
   padding:17px 18px;
-  border-radius:18px;
+  border-radius:22px;
   background:#ffffffda;
   border:1px solid #e0e3ec;
   backdrop-filter:blur(14px);
@@ -283,7 +293,7 @@ h1 em{
 .flow-card i{
   font-style:normal;
   font-size:10px;
-  color:var(--purple);
+  color:var(--violet);
   font-weight:800;
   letter-spacing:1px;
 }
@@ -331,13 +341,15 @@ h1 em{
 .d2{
   right:17%;
   top:56%;
-  background:var(--purple);
-  box-shadow:0 0 0 8px #7455df18;
+  background:var(--violet);
+  box-shadow:0 0 0 8px #7357e61f;
 }
 
 .band{
-  background:var(--ink);
+  background:linear-gradient(135deg,#0d1326 0%,#111a35 55%,#18254a 100%);
   color:#fff;
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
 
 .band .wrap{
@@ -353,13 +365,86 @@ h1 em{
   color:#9da5b8;
 }
 
-.tech{
+.tech-marquee{
+  position:relative;
+  flex:1;
+  min-width:0;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
+}
+
+.tech-marquee:before,
+.tech-marquee:after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:46px;
+  z-index:2;
+  pointer-events:none;
+}
+
+.tech-marquee:before{
+  left:0;
+  background:linear-gradient(to right,#111a35,transparent);
+}
+
+.tech-marquee:after{
+  right:0;
+  background:linear-gradient(to left,#18254a,transparent);
+}
+
+.tech-track{
   display:flex;
-  gap:30px;
-  flex-wrap:wrap;
-  font-size:13px;
-  font-weight:800;
-  color:#f5f6fb;
+  align-items:center;
+  width:max-content;
+  animation:techMarquee 34s linear infinite;
+  will-change:transform;
+}
+
+.tech-group{
+  display:flex;
+  align-items:center;
+  gap:48px;
+  padding-right:48px;
+}
+
+.tech-icon{
+  width:58px;
+  height:58px;
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  border-radius:17px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.09);
+  box-shadow:0 12px 28px rgba(3,8,22,.18);
+}
+
+.tech-icon img{
+  display:block;
+  width:38px;
+  height:38px;
+  object-fit:contain;
+  filter:drop-shadow(0 6px 12px rgba(0,0,0,.22));
+}
+
+.tech-marquee:hover .tech-track{
+  animation-play-state:paused;
+}
+
+@keyframes techMarquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .tech-track,
+  .discovery-icon,
+  .discovery-icon-wrap:after{
+    animation:none;
+  }
 }
 
 section{
@@ -394,7 +479,7 @@ section{
   min-height:340px;
   padding:35px;
   border:1px solid var(--line);
-  border-radius:var(--radius);
+  border-radius:28px;
   background:#fff;
   overflow:hidden;
   transition:.25s;
@@ -413,13 +498,13 @@ section{
   border-radius:50%;
   right:-80px;
   bottom:-80px;
-  background:#7256df12;
+  background:#7357e612;
 }
 
 .num{
   font-size:11px;
   font-weight:800;
-  color:var(--purple);
+  color:var(--violet);
   letter-spacing:1.4px;
 }
 
@@ -448,12 +533,231 @@ section{
 
 .card li:before{
   content:"↗";
-  color:var(--teal);
+  color:currentColor;
   margin-right:10px;
 }
 
+/* Interactive service cards */
+.cards{
+  position:relative;
+}
+
+.cards .card{
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  border:1px solid rgba(115,87,230,.18);
+  background:
+    radial-gradient(circle at 90% 0%,rgba(115,87,230,.12),transparent 34%),
+    linear-gradient(145deg,#0d1428 0%,#131d38 100%);
+  color:#fff;
+  box-shadow:0 18px 48px rgba(13,19,38,.13);
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+
+.cards .card:hover,
+.cards .card.is-active{
+  transform:translateY(-6px);
+  box-shadow:0 30px 74px rgba(13,19,38,.22);
+  border-color:rgba(115,87,230,.55);
+}
+
+.cards .card .num{
+  color:#a99cff;
+}
+
+.cards .card h3{
+  color:#fff;
+}
+
+.cards .card p{
+  color:#b8c2d8;
+}
+
+.cards .card li{
+  border-color:rgba(255,255,255,.12);
+  color:#f4f6fb;
+}
+
+.cards .card li:before{
+  color:#8f7cff;
+}
+
+.cards .card:after{
+  background:radial-gradient(circle,#7357e624 0%,transparent 70%);
+}
+
+.card-open{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-top:24px;
+  padding-top:17px;
+  border-top:1px solid rgba(255,255,255,.12);
+  color:#cbc4ff;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+}
+
+.card-open:after{
+  content:"+";
+  display:grid;
+  place-items:center;
+  width:29px;
+  height:29px;
+  border-radius:10px;
+  background:rgba(115,87,230,.16);
+  color:#c5bbff;
+  font-size:19px;
+  transition:transform .25s ease,background .25s ease;
+}
+
+.cards .card.is-active .card-open:after{
+  content:"−";
+  background:rgba(115,87,230,.30);
+}
+
+/* Expanded product banner */
+.service-detail{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+  gap:34px;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  margin-top:-20px;
+  padding:0 34px;
+  border:1px solid transparent;
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 86% 10%,rgba(79,140,255,.16),transparent 34%),
+    linear-gradient(145deg,#f7f8fc,#ffffff);
+  transition:max-height .45s ease,opacity .3s ease,margin .35s ease,padding .35s ease,border-color .35s ease;
+}
+
+.service-detail.is-open{
+  max-height:700px;
+  opacity:1;
+  margin-top:4px;
+  padding:34px;
+  border-color:#e0e4ee;
+  box-shadow:0 24px 70px rgba(17,25,48,.09);
+}
+
+.detail-copy{
+  align-self:center;
+}
+
+.detail-eyebrow{
+  margin-bottom:12px;
+  color:#7357e6;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.service-detail h3{
+  margin:0 0 14px;
+  color:#121a31;
+  font-size:clamp(27px,3vw,40px);
+  line-height:1.08;
+  letter-spacing:-1.7px;
+}
+
+.service-detail p{
+  max-width:650px;
+  margin:0 0 22px;
+  color:#687086;
+  font-size:15px;
+  line-height:1.75;
+}
+
+.detail-points{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px 18px;
+  margin:0 0 25px;
+  padding:0;
+  list-style:none;
+}
+
+.detail-points li{
+  color:#27304a;
+  font-size:13px;
+  font-weight:700;
+}
+
+.detail-points li:before{
+  content:"↗";
+  margin-right:9px;
+  color:#7357e6;
+}
+
+.detail-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 17px;
+  border-radius:14px;
+  background:#10182f;
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+}
+
+.detail-link:hover{
+  background:#18264a;
+}
+
+.detail-visual{
+  min-height:285px;
+  display:grid;
+  place-items:center;
+  border-radius:23px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#10182f,#1a2850);
+}
+
+.detail-visual svg{
+  width:100%;
+  height:100%;
+  min-height:285px;
+  display:block;
+}
+
+@media(max-width:900px){
+  .service-detail{
+    grid-template-columns:1fr;
+  }
+
+  .detail-visual{
+    order:-1;
+    min-height:220px;
+  }
+
+  .detail-visual svg{
+    min-height:220px;
+  }
+}
+
+@media(max-width:620px){
+  .service-detail.is-open{
+    padding:22px;
+  }
+
+  .detail-points{
+    grid-template-columns:1fr;
+  }
+}
+
 .dark-section{
-  background:var(--ink);
+  background:linear-gradient(145deg,#0d1326 0%,#111a35 55%,#18254a 100%);
   color:#fff;
   position:relative;
   overflow:hidden;
@@ -467,7 +771,7 @@ section{
   border-radius:50%;
   right:-180px;
   top:-190px;
-  background:#795ae52c;
+  background:#7357e62a;
   filter:blur(20px);
 }
 
@@ -484,7 +788,7 @@ section{
 }
 
 .dark-copy .kicker{
-  color:#afa1ff;
+  color:#c2b8ff;
 }
 
 .steps{
@@ -576,9 +880,9 @@ section{
   border-radius:31px;
   padding:58px;
   background:
-    radial-gradient(circle at 86% 8%,#795eea80,transparent 30%),
-    radial-gradient(circle at 7% 98%,#18b8b44f,transparent 30%),
-    var(--ink);
+    radial-gradient(circle at 86% 8%,#7357e68c,transparent 34%),
+    radial-gradient(circle at 7% 98%,#4f8cff5a,transparent 34%),
+    linear-gradient(145deg,#0d1326,#18254a);
   color:#fff;
   display:flex;
   align-items:end;
@@ -685,7 +989,13 @@ footer{
   }
 
   h1{
-    letter-spacing:-3.5px;
+    font-size:clamp(42px,12vw,56px);
+    line-height:1.08;
+    letter-spacing:-2.4px;
+  }
+
+  h1 br{
+    margin-bottom:8px;
   }
 
   .hero{
@@ -719,6 +1029,11 @@ footer{
 
   .f4{
     left:0;
+  }
+
+  .f5{
+    left:50%;
+    transform:translateX(-50%);
   }
 
   .cards{
@@ -756,6 +1071,194 @@ footer{
     max-width:160px;
   }
 }
+
+/* Always-visible discovery CTA */
+.discovery-dock{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  z-index:1000;
+  width:min(920px,calc(100% - 34px));
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:14px 15px 14px 22px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:20px;
+  background:
+    radial-gradient(circle at 15% 0%,rgba(115,87,230,.26),transparent 36%),
+    linear-gradient(135deg,rgba(12,20,40,.98),rgba(24,36,74,.98));
+  color:#fff;
+  box-shadow:0 24px 70px rgba(8,14,31,.34);
+  backdrop-filter:blur(18px);
+  transform:translate(-50%,130%);
+  opacity:0;
+  pointer-events:none;
+  transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity .3s ease;
+}
+
+.discovery-dock.is-visible{
+  transform:translate(-50%,0);
+  opacity:1;
+  pointer-events:auto;
+}
+
+.discovery-dock-copy{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  min-width:0;
+}
+
+.discovery-icon-wrap{
+  position:relative;
+  flex:0 0 auto;
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:rgba(255,255,255,.08);
+  box-shadow:0 0 0 1px rgba(255,255,255,.08);
+}
+
+.discovery-icon-wrap:after{
+  content:"";
+  position:absolute;
+  inset:-5px;
+  border:1px solid rgba(159,140,255,.52);
+  border-radius:17px;
+  animation:discoveryIconPulse 2.3s ease-out infinite;
+}
+
+.discovery-icon{
+  position:relative;
+  z-index:1;
+  width:26px;
+  height:26px;
+  display:block;
+  object-fit:contain;
+  filter:drop-shadow(0 5px 12px rgba(115,87,230,.40));
+  animation:discoveryIconFloat 3.2s ease-in-out infinite;
+}
+
+@keyframes discoveryIconPulse{
+  0%{transform:scale(.78);opacity:.9}
+  72%,100%{transform:scale(1.38);opacity:0}
+}
+
+@keyframes discoveryIconFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-2px)}
+}
+
+.discovery-dock strong{
+  display:block;
+  margin-bottom:3px;
+  font-size:14px;
+  letter-spacing:-.2px;
+}
+
+.discovery-dock span{
+  display:block;
+  overflow:hidden;
+  color:#b9c2d7;
+  font-size:12px;
+  line-height:1.4;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.discovery-dock-action{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 17px;
+  border-radius:13px;
+  background:linear-gradient(135deg,#7357e6,#5d75ed);
+  color:#fff;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:850;
+  letter-spacing:.25px;
+  box-shadow:0 10px 26px rgba(90,78,215,.32);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.discovery-dock-action:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 34px rgba(90,78,215,.44);
+}
+
+body.has-discovery-dock{
+  padding-bottom:96px;
+}
+
+@media(max-width:680px){
+  .discovery-dock{
+    bottom:10px;
+    width:calc(100% - 20px);
+    gap:12px;
+    padding:12px;
+    border-radius:17px;
+  }
+
+  .discovery-dock-copy{
+    gap:11px;
+  }
+
+  .discovery-dock strong{
+    font-size:12px;
+  }
+
+  .discovery-dock span{
+    max-width:42vw;
+    font-size:10px;
+  }
+
+  .discovery-dock-action{
+    padding:11px 13px;
+    font-size:11px;
+  }
+}
+
+
+@media(max-width:760px){
+  .band .wrap{
+    min-height:118px;
+    align-items:flex-start;
+    flex-direction:column;
+    justify-content:center;
+    gap:13px;
+  }
+
+  .band-label{
+    padding-left:2px;
+  }
+
+  .tech-marquee{
+    width:100%;
+  }
+
+  .tech-group{
+    gap:28px;
+    padding-right:28px;
+  }
+
+  .tech-icon{
+    width:50px;
+    height:50px;
+    border-radius:15px;
+  }
+
+  .tech-icon img{
+    width:33px;
+    height:33px;
+  }
+}
+
 </style>
 </head>
 
@@ -876,12 +1379,27 @@ footer{
       Modern data capability across
     </span>
 
-    <div class="tech">
-      <span>Azure</span>
-      <span>Microsoft Fabric</span>
-      <span>Power BI</span>
-      <span>Tableau</span>
-      <span>AI</span>
+    <div class="tech-marquee" aria-label="Technology capabilities">
+      <div class="tech-track">
+        <div class="tech-group">
+          <span class="tech-icon"><img src="Icon1.png" alt="Technology capability 1"></span>
+          <span class="tech-icon"><img src="Icon2.png" alt="Technology capability 2"></span>
+          <span class="tech-icon"><img src="Icon3.png" alt="Technology capability 3"></span>
+          <span class="tech-icon"><img src="Icon4.png" alt="Technology capability 4"></span>
+          <span class="tech-icon"><img src="Icon5.png" alt="Technology capability 5"></span>
+          <span class="tech-icon"><img src="Icon6.png" alt="Technology capability 6"></span>
+          <span class="tech-icon"><img src="Icon7.png" alt="Technology capability 7"></span>
+        </div>
+        <div class="tech-group" aria-hidden="true">
+          <span class="tech-icon"><img src="Icon1.png" alt="Technology capability 1"></span>
+          <span class="tech-icon"><img src="Icon2.png" alt="Technology capability 2"></span>
+          <span class="tech-icon"><img src="Icon3.png" alt="Technology capability 3"></span>
+          <span class="tech-icon"><img src="Icon4.png" alt="Technology capability 4"></span>
+          <span class="tech-icon"><img src="Icon5.png" alt="Technology capability 5"></span>
+          <span class="tech-icon"><img src="Icon6.png" alt="Technology capability 6"></span>
+          <span class="tech-icon"><img src="Icon7.png" alt="Technology capability 7"></span>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -898,8 +1416,8 @@ footer{
 
     <div class="cards">
 
-      <article class="card reveal">
-        <span class="num">01 / DISCOVER</span>
+      <article class="card reveal" data-service="discovery" tabindex="0" role="button" aria-expanded="false">
+<span class="num">01 / DISCOVER</span>
         <h3>Data Discovery</h3>
         <p>
           We assess your systems, reporting, governance and team capability,
@@ -910,10 +1428,11 @@ footer{
           <li>Target architecture</li>
           <li>Prioritised roadmap</li>
         </ul>
+        <div class="card-open">View product</div>
       </article>
 
-      <article class="card reveal">
-        <span class="num">02 / DESIGN & BUILD</span>
+      <article class="card reveal" data-service="architecture" tabindex="0" role="button" aria-expanded="false">
+<span class="num">02 / DESIGN & BUILD</span>
         <h3>Platform & Architecture</h3>
         <p>
           We design and build a governed data platform that is scalable,
@@ -924,10 +1443,11 @@ footer{
           <li>Data models and ledgers</li>
           <li>Governance and lineage</li>
         </ul>
+        <div class="card-open">View product</div>
       </article>
 
-      <article class="card reveal">
-        <span class="num">03 / ENABLE</span>
+      <article class="card reveal" data-service="reporting" tabindex="0" role="button" aria-expanded="false">
+<span class="num">03 / ENABLE</span>
         <h3>Reporting & Analytics</h3>
         <p>
           We replace fragmented spreadsheets and legacy reports with trusted,
@@ -938,10 +1458,11 @@ footer{
           <li>Executive reporting</li>
           <li>Self-service analytics</li>
         </ul>
+        <div class="card-open">View product</div>
       </article>
 
-      <article class="card reveal">
-        <span class="num">04 / OPERATE</span>
+      <article class="card reveal" data-service="managed" tabindex="0" role="button" aria-expanded="false">
+<span class="num">04 / OPERATE</span>
         <h3>Managed Data Team</h3>
         <p>
           We become your ongoing data capability, providing leadership,
@@ -952,7 +1473,169 @@ footer{
           <li>Flexible delivery capacity</li>
           <li>Continuous improvement</li>
         </ul>
+        <div class="card-open">View product</div>
       </article>
+
+      <section class="service-detail" id="detail-discovery" aria-hidden="true">
+        <div class="detail-copy">
+          <div class="detail-eyebrow">01 / Data Discovery</div>
+          <h3>Find the problems worth solving before investing in the solution.</h3>
+          <p>We assess your systems, reporting, data quality, ownership and delivery capability, then turn the findings into a practical roadmap that gives leadership a clear place to start.</p>
+          <ul class="detail-points">
+            <li>Current-state assessment</li>
+            <li>Opportunity and risk map</li>
+            <li>Target-state direction</li>
+            <li>Prioritised 90-day plan</li>
+          </ul>
+          <a class="detail-link" href="data-discovery.html">Read more <span>↗</span></a>
+        </div>
+        <div class="detail-visual" aria-hidden="true">
+          <svg viewBox="0 0 600 360" role="img">
+            <defs>
+              <linearGradient id="d1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#7357e6"/>
+                <stop offset="1" stop-color="#4f8cff"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="360" rx="28" fill="#10182f"/>
+            <circle cx="462" cy="78" r="96" fill="#7357e6" opacity=".18"/>
+            <circle cx="118" cy="302" r="92" fill="#4f8cff" opacity=".16"/>
+            <rect x="70" y="62" width="310" height="224" rx="24" fill="#17213f" stroke="#ffffff" stroke-opacity=".08"/>
+            <rect x="95" y="90" width="110" height="12" rx="6" fill="#9f8cff"/>
+            <rect x="95" y="118" width="238" height="8" rx="4" fill="#ffffff" opacity=".18"/>
+            <rect x="95" y="138" width="204" height="8" rx="4" fill="#ffffff" opacity=".12"/>
+            <circle cx="151" cy="207" r="38" fill="url(#d1)"/>
+            <path d="M176 231 L215 270" stroke="#9f8cff" stroke-width="13" stroke-linecap="round"/>
+            <rect x="245" y="178" width="92" height="18" rx="9" fill="#4f8cff" opacity=".75"/>
+            <rect x="245" y="209" width="66" height="12" rx="6" fill="#ffffff" opacity=".2"/>
+            <rect x="245" y="234" width="82" height="12" rx="6" fill="#ffffff" opacity=".12"/>
+            <rect x="405" y="118" width="125" height="54" rx="16" fill="#ffffff" opacity=".08"/>
+            <rect x="425" y="136" width="84" height="9" rx="4.5" fill="#ffffff" opacity=".42"/>
+            <rect x="405" y="194" width="125" height="54" rx="16" fill="#ffffff" opacity=".08"/>
+            <rect x="425" y="212" width="64" height="9" rx="4.5" fill="#ffffff" opacity=".42"/>
+          </svg>
+        </div>
+      </section>
+
+      <section class="service-detail" id="detail-architecture" aria-hidden="true">
+        <div class="detail-copy">
+          <div class="detail-eyebrow">02 / Platform & Architecture</div>
+          <h3>Build a data foundation that is clear, governed and ready to grow.</h3>
+          <p>We design and deliver modern data platforms around real business needs—using practical architecture patterns that reduce complexity rather than adding another technology programme.</p>
+          <ul class="detail-points">
+            <li>Cloud platform architecture</li>
+            <li>Lakehouse and warehouse design</li>
+            <li>Semantic and reporting layers</li>
+            <li>Governance and lineage</li>
+          </ul>
+          <a class="detail-link" href="platform-architecture.html">Read more <span>↗</span></a>
+        </div>
+        <div class="detail-visual" aria-hidden="true">
+          <svg viewBox="0 0 600 360" role="img">
+            <rect width="600" height="360" rx="28" fill="#10182f"/>
+            <circle cx="496" cy="58" r="106" fill="#7357e6" opacity=".18"/>
+            <g stroke="#8f7cff" stroke-width="3" opacity=".8">
+              <path d="M150 96 L300 176 L450 96"/>
+              <path d="M150 96 L150 245 L300 318"/>
+              <path d="M450 96 L450 245 L300 318"/>
+              <path d="M300 176 L300 318"/>
+            </g>
+            <g fill="#17213f" stroke="#9f8cff" stroke-width="2">
+              <rect x="86" y="54" width="128" height="78" rx="18"/>
+              <rect x="386" y="54" width="128" height="78" rx="18"/>
+              <rect x="236" y="138" width="128" height="78" rx="18"/>
+              <rect x="86" y="218" width="128" height="78" rx="18"/>
+              <rect x="386" y="218" width="128" height="78" rx="18"/>
+              <rect x="236" y="270" width="128" height="64" rx="18"/>
+            </g>
+            <g fill="#ffffff" opacity=".72">
+              <rect x="112" y="77" width="76" height="10" rx="5"/>
+              <rect x="412" y="77" width="76" height="10" rx="5"/>
+              <rect x="262" y="162" width="76" height="10" rx="5"/>
+              <rect x="112" y="242" width="76" height="10" rx="5"/>
+              <rect x="412" y="242" width="76" height="10" rx="5"/>
+              <rect x="262" y="292" width="76" height="10" rx="5"/>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <section class="service-detail" id="detail-reporting" aria-hidden="true">
+        <div class="detail-copy">
+          <div class="detail-eyebrow">03 / Reporting & Analytics</div>
+          <h3>Turn reporting into a product people can understand and trust.</h3>
+          <p>We replace fragmented spreadsheets and legacy dashboards with a focused analytics experience—fewer reports, stronger definitions and clearer decisions.</p>
+          <ul class="detail-points">
+            <li>Executive reporting</li>
+            <li>Power BI and Tableau products</li>
+            <li>Governed self-service datasets</li>
+            <li>Adoption and user experience</li>
+          </ul>
+          <a class="detail-link" href="reporting-analytics.html">Read more <span>↗</span></a>
+        </div>
+        <div class="detail-visual" aria-hidden="true">
+          <svg viewBox="0 0 600 360" role="img">
+            <defs>
+              <linearGradient id="r1" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="#4f8cff"/>
+                <stop offset="1" stop-color="#9f8cff"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="360" rx="28" fill="#10182f"/>
+            <rect x="62" y="48" width="476" height="264" rx="24" fill="#17213f" stroke="#ffffff" stroke-opacity=".08"/>
+            <rect x="88" y="76" width="110" height="12" rx="6" fill="#9f8cff"/>
+            <rect x="88" y="106" width="190" height="8" rx="4" fill="#ffffff" opacity=".15"/>
+            <rect x="88" y="146" width="118" height="128" rx="16" fill="#ffffff" opacity=".06"/>
+            <circle cx="147" cy="203" r="38" fill="none" stroke="#4f8cff" stroke-width="17"/>
+            <path d="M147 165 A38 38 0 0 1 181 219" fill="none" stroke="#9f8cff" stroke-width="17" stroke-linecap="round"/>
+            <rect x="230" y="148" width="278" height="126" rx="16" fill="#ffffff" opacity=".05"/>
+            <path d="M252 243 C285 213,309 226,337 190 S393 218,420 170 S466 184,490 156" fill="none" stroke="url(#r1)" stroke-width="8" stroke-linecap="round"/>
+            <g fill="#8f7cff">
+              <circle cx="252" cy="243" r="6"/><circle cx="337" cy="190" r="6"/><circle cx="420" cy="170" r="6"/><circle cx="490" cy="156" r="6"/>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <section class="service-detail" id="detail-managed" aria-hidden="true">
+        <div class="detail-copy">
+          <div class="detail-eyebrow">04 / Managed Data Team</div>
+          <h3>Add a complete data capability without building one from scratch.</h3>
+          <p>CoData becomes your flexible data function—combining leadership, engineering, analytics and ongoing improvement in one accountable managed service.</p>
+          <ul class="detail-points">
+            <li>Fractional data leadership</li>
+            <li>Engineering and platform support</li>
+            <li>BI and analytics delivery</li>
+            <li>Roadmap and governance</li>
+          </ul>
+          <a class="detail-link" href="managed-data-team.html">Read more <span>↗</span></a>
+        </div>
+        <div class="detail-visual" aria-hidden="true">
+          <svg viewBox="0 0 600 360" role="img">
+            <rect width="600" height="360" rx="28" fill="#10182f"/>
+            <circle cx="470" cy="70" r="105" fill="#7357e6" opacity=".18"/>
+            <g>
+              <circle cx="300" cy="114" r="46" fill="#7357e6"/>
+              <circle cx="170" cy="208" r="38" fill="#4f8cff"/>
+              <circle cx="430" cy="208" r="38" fill="#8f7cff"/>
+              <circle cx="300" cy="270" r="34" fill="#25345f"/>
+            </g>
+            <g stroke="#9f8cff" stroke-width="4" opacity=".75">
+              <path d="M270 145 L198 184"/>
+              <path d="M330 145 L402 184"/>
+              <path d="M192 236 L273 259"/>
+              <path d="M408 236 L327 259"/>
+            </g>
+            <g fill="#ffffff" opacity=".9">
+              <circle cx="300" cy="101" r="12"/><path d="M278 134 Q300 116 322 134"/>
+              <circle cx="170" cy="197" r="10"/><path d="M151 223 Q170 208 189 223"/>
+              <circle cx="430" cy="197" r="10"/><path d="M411 223 Q430 208 449 223"/>
+              <circle cx="300" cy="260" r="9"/><path d="M283 283 Q300 269 317 283"/>
+            </g>
+          </svg>
+        </div>
+      </section>
+
 
     </div>
   </div>
@@ -1069,7 +1752,7 @@ footer{
 
       <div>
 
-        <div class="kicker" style="color:#b9afff">
+        <div class="kicker" style="color:#c8c0ff">
           Start now
         </div>
 
@@ -1129,6 +1812,88 @@ document
   .querySelectorAll('.reveal')
   .forEach(element => io.observe(element));
 </script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = [...document.querySelectorAll(".cards .card[data-service]")];
+  const panels = [...document.querySelectorAll(".service-detail")];
+
+  function closeAll() {
+    cards.forEach(card => {
+      card.classList.remove("is-active");
+      card.setAttribute("aria-expanded", "false");
+    });
+    panels.forEach(panel => {
+      panel.classList.remove("is-open");
+      panel.setAttribute("aria-hidden", "true");
+    });
+  }
+
+  function toggleCard(card) {
+    const service = card.dataset.service;
+    const panel = document.getElementById(`detail-${service}`);
+    const wasOpen = card.classList.contains("is-active");
+
+    closeAll();
+
+    if (!wasOpen && panel) {
+      card.classList.add("is-active");
+      card.setAttribute("aria-expanded", "true");
+      panel.classList.add("is-open");
+      panel.setAttribute("aria-hidden", "false");
+
+      window.setTimeout(() => {
+        panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 180);
+    }
+  }
+
+  cards.forEach(card => {
+    card.addEventListener("click", event => {
+      if (event.target.closest("a")) return;
+      toggleCard(card);
+    });
+
+    card.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleCard(card);
+      }
+    });
+  });
+
+  const discoveryDock = document.getElementById("discoveryDock");
+  const hero = document.querySelector(".hero");
+
+  function updateDiscoveryDock() {
+    if (!discoveryDock) return;
+    const triggerPoint = hero ? hero.offsetHeight * 0.55 : 320;
+    const visible = window.scrollY > triggerPoint;
+    discoveryDock.classList.toggle("is-visible", visible);
+    document.body.classList.toggle("has-discovery-dock", visible);
+  }
+
+  window.addEventListener("scroll", updateDiscoveryDock, { passive:true });
+  window.addEventListener("resize", updateDiscoveryDock);
+  updateDiscoveryDock();
+
+});
+</script>
+
+
+<aside class="discovery-dock" id="discoveryDock" aria-label="Book a discovery session">
+  <div class="discovery-dock-copy">
+    <div class="discovery-icon-wrap" aria-hidden="true"><img class="discovery-icon" src="Icon.png" alt=""></div>
+    <div>
+      <strong>Ready to make sense of your data?</strong>
+      <span>Book a focused discovery session and leave with a clear next step.</span>
+    </div>
+  </div>
+  <a class="discovery-dock-action" href="#contact">
+    Book discovery <span aria-hidden="true">↗</span>
+  </a>
+</aside>
 
 </body>
 </html>
