@@ -399,35 +399,39 @@ h1 em{
   display:flex;
   align-items:center;
   width:max-content;
-  animation:techMarquee 34s linear infinite;
+  animation:techMarquee 46s linear infinite;
   will-change:transform;
 }
 
 .tech-group{
   display:flex;
   align-items:center;
-  gap:48px;
-  padding-right:48px;
+  gap:72px;
+  padding-right:72px;
 }
 
 .tech-icon{
-  width:58px;
-  height:58px;
+  width:250px;
+  height:96px;
   flex:0 0 auto;
-  display:grid;
-  place-items:center;
-  border-radius:17px;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.09);
-  box-shadow:0 12px 28px rgba(3,8,22,.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
 }
 
 .tech-icon img{
   display:block;
-  width:38px;
-  height:38px;
+  width:100%;
+  height:100%;
   object-fit:contain;
-  filter:drop-shadow(0 6px 12px rgba(0,0,0,.22));
+  border:0;
+  border-radius:0;
+  background:transparent;
+  filter:none;
 }
 
 .tech-marquee:hover .tech-track{
@@ -1227,7 +1231,7 @@ body.has-discovery-dock{
 
 @media(max-width:760px){
   .band .wrap{
-    min-height:118px;
+    min-height:142px;
     align-items:flex-start;
     flex-direction:column;
     justify-content:center;
@@ -1243,20 +1247,56 @@ body.has-discovery-dock{
   }
 
   .tech-group{
-    gap:28px;
-    padding-right:28px;
+    gap:38px;
+    padding-right:38px;
   }
 
   .tech-icon{
-    width:50px;
-    height:50px;
-    border-radius:15px;
+    width:190px;
+    height:76px;
+    border-radius:0;
   }
 
   .tech-icon img{
-    width:33px;
-    height:33px;
+    width:100%;
+    height:100%;
   }
+}
+
+
+/* Unified primary CTA */
+.btn-primary,
+.discovery-dock-action,
+a[href="#contact"].btn,
+a[href="#contact"].button,
+a[href*="mailto"].btn,
+a[href*="mailto"].button,
+.cta a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 22px;
+  border:0;
+  border-radius:14px;
+  background:linear-gradient(135deg,#7357e6 0%,#5c7cfa 100%);
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  box-shadow:0 12px 32px rgba(115,87,230,.35);
+  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+}
+
+.btn-primary:hover,
+.discovery-dock-action:hover,
+a[href="#contact"].btn:hover,
+a[href="#contact"].button:hover,
+a[href*="mailto"].btn:hover,
+a[href*="mailto"].button:hover,
+.cta a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 40px rgba(115,87,230,.45);
+  filter:saturate(1.06);
 }
 
 </style>
@@ -1276,7 +1316,7 @@ body.has-discovery-dock{
         <a href="#services">Services</a>
         <a href="#approach">Approach</a>
         <a href="#why">Why CoData</a>
-        <a class="btn small" href="#contact">Book discovery</a>
+        <a class="btn small btn-primary" href="#contact">Book Your Discovery</a>
       </div>
 
       <button class="menu" aria-label="Menu">☰</button>
@@ -1306,7 +1346,7 @@ body.has-discovery-dock{
       </p>
 
       <div class="actions">
-        <a class="btn" href="#contact">Book discovery</a>
+        <a class="btn btn-primary" href="#contact">Book Your Discovery</a>
         <a class="plain" href="#services">
           Explore services <span>→</span>
         </a>
@@ -1382,22 +1422,22 @@ body.has-discovery-dock{
     <div class="tech-marquee" aria-label="Technology capabilities">
       <div class="tech-track">
         <div class="tech-group">
-          <span class="tech-icon"><img src="Icon1.png" alt="Technology capability 1"></span>
-          <span class="tech-icon"><img src="Icon2.png" alt="Technology capability 2"></span>
-          <span class="tech-icon"><img src="Icon3.png" alt="Technology capability 3"></span>
-          <span class="tech-icon"><img src="Icon4.png" alt="Technology capability 4"></span>
-          <span class="tech-icon"><img src="Icon5.png" alt="Technology capability 5"></span>
-          <span class="tech-icon"><img src="Icon6.png" alt="Technology capability 6"></span>
-          <span class="tech-icon"><img src="Icon7.png" alt="Technology capability 7"></span>
+          <span class="tech-icon"><img src="Icon1.png" alt="CoData technology partner 1"></span>
+          <span class="tech-icon"><img src="Icon2.png" alt="CoData technology partner 2"></span>
+          <span class="tech-icon"><img src="Icon3.png" alt="CoData technology partner 3"></span>
+          <span class="tech-icon"><img src="Icon4.png" alt="CoData technology partner 4"></span>
+          <span class="tech-icon"><img src="Icon5.png" alt="CoData technology partner 5"></span>
+          <span class="tech-icon"><img src="Icon6.png" alt="CoData technology partner 6"></span>
+          <span class="tech-icon"><img src="Icon7.png" alt="CoData technology partner 7"></span>
         </div>
         <div class="tech-group" aria-hidden="true">
-          <span class="tech-icon"><img src="Icon1.png" alt="Technology capability 1"></span>
-          <span class="tech-icon"><img src="Icon2.png" alt="Technology capability 2"></span>
-          <span class="tech-icon"><img src="Icon3.png" alt="Technology capability 3"></span>
-          <span class="tech-icon"><img src="Icon4.png" alt="Technology capability 4"></span>
-          <span class="tech-icon"><img src="Icon5.png" alt="Technology capability 5"></span>
-          <span class="tech-icon"><img src="Icon6.png" alt="Technology capability 6"></span>
-          <span class="tech-icon"><img src="Icon7.png" alt="Technology capability 7"></span>
+          <span class="tech-icon"><img src="Icon1.png" alt="CoData technology partner 1"></span>
+          <span class="tech-icon"><img src="Icon2.png" alt="CoData technology partner 2"></span>
+          <span class="tech-icon"><img src="Icon3.png" alt="CoData technology partner 3"></span>
+          <span class="tech-icon"><img src="Icon4.png" alt="CoData technology partner 4"></span>
+          <span class="tech-icon"><img src="Icon5.png" alt="CoData technology partner 5"></span>
+          <span class="tech-icon"><img src="Icon6.png" alt="CoData technology partner 6"></span>
+          <span class="tech-icon"><img src="Icon7.png" alt="CoData technology partner 7"></span>
         </div>
       </div>
     </div>
@@ -1890,8 +1930,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <span>Book a focused discovery session and leave with a clear next step.</span>
     </div>
   </div>
-  <a class="discovery-dock-action" href="#contact">
-    Book discovery <span aria-hidden="true">↗</span>
+  <a class="discovery-dock-action btn-primary" href="#contact">
+    Book Your Discovery <span aria-hidden="true">↗</span>
   </a>
 </aside>
 
